@@ -294,8 +294,6 @@ void olc::rcw::Engine::Update(float fElapsedTime)
 							// collided.
 
 							olc::vf2d vNearestPoint;
-							// Inspired by this (very clever btw) 
-							// https://stackoverflow.com/questions/45370692/circle-rectangle-collision-response
 							vNearestPoint.x = std::max(float(vCell.x), std::min(vPotentialPosition.x, float(vCell.x + 1)));
 							vNearestPoint.y = std::max(float(vCell.y), std::min(vPotentialPosition.y, float(vCell.y + 1)));
 
