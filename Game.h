@@ -412,11 +412,21 @@ public:
 		auto& un = pGame->mapObjects[6];
 		auto& oracle = pGame->mapObjects[7];
 
-		if (GetKey(olc::Key::A).bHeld) // Turn Left
-			player->Turn(-fPlayerMoveSpeed * 0.15f * fElapsedTime);
 
-		if (GetKey(olc::Key::D).bHeld) // Turn Right
+
+		//if (GetKey(olc::Key::A).bHeld) // Turn Left
+		if (GetMouseX() > 160) {
 			player->Turn(+fPlayerMoveSpeed * 0.15f * fElapsedTime);
+		}
+
+		if (GetMouseX() > 80 && GetMouseX() < 160) {
+			player->Turn(0 * 0.15f * fElapsedTime);
+		}
+
+		//if (GetKey(olc::Key::D).bHeld) // Turn Right
+		if (GetMouseX() < 80) {
+			player->Turn(-fPlayerMoveSpeed * 0.15f * fElapsedTime);
+		}
 
 		// Reset speed and velocity so player doesnt move if keys are not pressed
 		player->Stop();
@@ -428,9 +438,9 @@ public:
 		// Walk Backwards
 		if (GetKey(olc::Key::S).bHeld) player->Walk(-fPlayerMoveSpeed);
 		// Strafe Right
-		if (GetKey(olc::Key::E).bHeld) player->Strafe(+fPlayerMoveSpeed);
+		if (GetKey(olc::Key::D).bHeld) player->Strafe(+fPlayerMoveSpeed);
 		// Strafe Left
-		if (GetKey(olc::Key::Q).bHeld) player->Strafe(-fPlayerMoveSpeed);
+		if (GetKey(olc::Key::A).bHeld) player->Strafe(-fPlayerMoveSpeed);
 		//Fire
 		if (GetMouse(0).bHeld) {
 			ball->pos = player->pos;
